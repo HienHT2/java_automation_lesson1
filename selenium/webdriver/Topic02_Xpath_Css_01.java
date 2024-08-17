@@ -2,7 +2,10 @@ package webdriver;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.locators.RelativeLocator;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -12,6 +15,7 @@ public class Topic02_Xpath_Css_01 {
     @BeforeClass
     public void inital_Browser(){
         driver = new FirefoxDriver();
+        //driver = new ChromeDriver();
         driver.get("https://demo.nopcommerce.com/register");
 
     }
@@ -83,6 +87,28 @@ public class Topic02_Xpath_Css_01 {
         driver.findElement(By.xpath("//a"));
         driver.findElement(By.xpath("//button"));
         driver.findElement(By.xpath("//input"));
+    }
+    @Test
+    public void TC_09_Relative_Locator(){
+        driver.get("https://demo.nopcommerce.com/login?returnUrl=%2Fregister");
+        //Element /By A
+            By passwordcheckbox = By.cssSelector("input#Password");
+            WebElement inputpasswordCheckbox =driver.findElement(By.cssSelector(("input#Password"))) ;
+        // Element /By B
+            By remembercheckbox = By.id("RememberMe");
+        // Element /By C
+            By forgerpassworbByLink = By.cssSelector("span.forgot-password");
+        // Element /By D
+            By LoginButtonBy = By.cssSelector("button.login-button");
+        // Elemeny /By E
+          WebElement rememberMeTextElement=  driver.findElement(RelativeLocator.with(By.tagName("label"))
+                    .above(LoginButtonBy)
+                    .below(passwordcheckbox)
+                    .toRightOf(remembercheckbox)
+                    .toLeftOf(forgerpassworbByLink));
+          System.out.println(rememberMeTextElement.getText());
+
+
     }
     @AfterClass
     //3 Clean : Delete Data/ account/ CLose Browser
