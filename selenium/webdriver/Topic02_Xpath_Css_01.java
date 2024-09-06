@@ -15,7 +15,7 @@ public class Topic02_Xpath_Css_01 {
     @BeforeClass
     public void inital_Browser(){
         driver = new FirefoxDriver();
-        //driver = new ChromeDriver();
+        driver = new ChromeDriver();
         driver.get("https://demo.nopcommerce.com/register");
 
     }

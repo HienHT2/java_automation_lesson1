@@ -96,7 +96,7 @@ public class Topic_02_Excersice_Xpatch_Css {
         driver.findElement(By.xpath("//input[@id='txtPhone']")).sendKeys("03892198261");
         driver.findElement(By.xpath("//button[@class='btn_pink_sm fs16']")).click();
 
-        Assert.assertEquals(driver.findElement(By.xpath("//label[@id='txtPhone-error']")).getText(),"Số điện thoại phải từ 10-11 số. ");
+        Assert.assertEquals(driver.findElement(By.xpath("//label[@id='txtPhone-error']")).getText(),"Số điện thoại phải từ 10-11 số.");
 
     }
     @AfterClass

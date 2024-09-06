@@ -2,6 +2,7 @@ package webdriver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -17,7 +18,7 @@ public class Topic00_Template {
     @Test
     // 2 -Action/ execute: Tuong tac voi cac Element ,...
     public void TC_01_Register(){
-
+       
     }
     @Test
     public void Tc_02_Login(){
