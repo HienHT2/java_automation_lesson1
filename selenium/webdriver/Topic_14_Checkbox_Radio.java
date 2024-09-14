@@ -1,5 +1,6 @@
 package webdriver;
 
+import com.beust.ah.A;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
@@ -14,9 +15,11 @@ import java.util.List;
 public class Topic_14_Checkbox_Radio {
     //1-Set up : OS / Browser/Web/ Page/Data /Variable /Objcet...
     WebDriver driver;
+    JavascriptExecutor jsExcutor;
     @BeforeClass
     public void initalBrowser(){
         driver = new FirefoxDriver();
+        jsExcutor = (JavascriptExecutor) driver;
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         //kich thuoc cua browser
         driver.manage().window().maximize();
@@ -100,6 +103,52 @@ public class Topic_14_Checkbox_Radio {
         }
         Assert.assertTrue(driver.findElement(By.cssSelector("input[value='Kidney Disease")).isSelected());
     }
+    @Test
+    public void TC_03_Ubuntu(){
+        driver.get("https://login.ubuntu.com/");
+        //Dung the input de click
+        //Dung de verify: isSelected
+
+
+        //1-Dung the input de click=> false
+        //Dung the input de verify-> true
+       // Assert.assertFalse(driver.findElement(newUserRadion).isSelected());
+        //2-Dung 1 the khac input de click
+        //dung the do verify-> false
+
+        //3- Dung the khac input de click-> Pass
+        //Dung the input nay de verify -> Pass
+        By newUserRadio=By.cssSelector("input#id_new_user");
+       // By newUserLabel= By.cssSelector("label.new-user");
+        //driver.findElement(newUserLabel).click();
+        //Assert.assertTrue(driver.findElement(newUserRadio).isSelected());
+        //4
+        jsExcutor.executeScript("arguments[0].click();",driver.findElement(newUserRadio));
+        Assert.assertTrue(driver.findElement(newUserRadio).isSelected());
+
+        By checkboxAgree= By.cssSelector("input#id_accept_tos");
+        jsExcutor.executeScript("arguments[0].click();",driver.findElement(checkboxAgree));
+        Assert.assertTrue(driver.findElement(checkboxAgree).isSelected());
+
+    }
+    @Test
+    public void TC_04_Google_doc() throws InterruptedException{
+        driver.get("https://docs.google.com/forms/d/e/1FAIpQLSfiypnd69zhuDkjKgqvpID9kwO29UCzeCVrGGtbNPZXQok0jA/viewform");
+        By hcmRadio = By.xpath("//div[@aria-label='Hồ Chí Minh']");
+        Thread.sleep(5000);
+        driver.findElement(hcmRadio).click();
+        //sau khi click có are-checked= true
+        Assert.assertEquals(driver.findElement(hcmRadio).getAttribute("aria-checked"),"true");
+        By quangNoodleCheclbox = By.xpath("//div[@aria-label='Mì Quảng']");
+        if(driver.findElement(quangNoodleCheclbox).getAttribute("aria-checked").equals("false")){
+            driver.findElement(quangNoodleCheclbox).click();
+        }
+        Assert.assertEquals(driver.findElement(quangNoodleCheclbox).getAttribute("aria-checked"),"true");
+
+    }
+
+
+
     @AfterClass
     //3 Clean : Delete Data/ account/ CLose Browser
     public void cleanBrowser(){
