@@ -27,6 +27,7 @@ public class Topic_17_Actions_I {
         action = new Actions(driver);
 
 
+
     }
     @Test
     // 2 -Action/ execute: Tuong tac voi cac Element ,...
@@ -50,6 +51,17 @@ public class Topic_17_Actions_I {
         //action.click(driver.findElement(By.xpath("//a[@class='desktop-categoryName' and text()='Home & Bath']"))).perform();
         Assert.assertEquals(driver.findElement(By.cssSelector("span.breadcrumbs-crumb")).getText(),"Kids Home Bath");
 
+
+    }
+    @Test
+    public void TC_03_Hover_Fahasa() throws InterruptedException {
+        driver.get("https://www.fahasa.com/");
+        action.moveToElement(driver.findElement(By.cssSelector("span.icon_menu"))).perform();
+        Thread.sleep(2000);
+        action.moveToElement(driver.findElement(By.xpath("//span[text()='Hành Trang Đến Trường']"))).perform();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//div[@class='fhs_column_stretch']//a[text()='Luyện Thi Môn Toán']")).click();
+      Assert.assertTrue(driver.findElement(By.xpath("//ol[@class='breadcrumb']//strong[text()='Toán']")).isDisplayed());
 
     }
     @AfterClass

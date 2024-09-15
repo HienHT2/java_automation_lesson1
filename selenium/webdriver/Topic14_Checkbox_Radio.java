@@ -1,6 +1,5 @@
 package webdriver;
 
-import com.beust.ah.A;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
@@ -8,11 +7,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import javax.swing.*;
 import java.time.Duration;
 import java.util.List;
 
-public class Topic_14_Checkbox_Radio {
+public class Topic14_Checkbox_Radio {
     //1-Set up : OS / Browser/Web/ Page/Data /Variable /Objcet...
     WebDriver driver;
     JavascriptExecutor jsExcutor;

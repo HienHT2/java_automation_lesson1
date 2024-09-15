@@ -8,7 +8,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Topic_02_Excersice_Xpatch_Css {
+public class Topic02_Excersice_Xpatch_Css {
     WebDriver driver;
     @BeforeClass
     public void IntialBrowser(){

@@ -2,8 +2,6 @@ package webdriver;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.Color;
 import org.testng.Assert;
@@ -11,7 +9,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Topic_12_Button {
+public class Topic12_Button {
     //1-Set up : OS / Browser/Web/ Page/Data /Variable /Objcet...
     WebDriver driver;
     @BeforeClass
