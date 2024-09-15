@@ -4,12 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import zmq.socket.pubsub.Pub;
 
 import java.time.Duration;
 import java.util.List;
@@ -22,7 +24,8 @@ public class Topic_18_Actions_II {
     Keys keys;
     @BeforeClass
     public void initalBrowser(){
-        driver = new FirefoxDriver();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         action = new Actions(driver);
         if(osName.startsWith("Windows")){
@@ -79,6 +82,31 @@ public class Topic_18_Actions_II {
         Assert.assertEquals(driver.findElement(By.cssSelector("p#demo")).getText(),"Hello Automation Guys!");
 
     }
+    @Test
+    public void TC_04_Right_CLick_To_Element() throws InterruptedException {
+        driver.get("https://swisnl.github.io/jQuery-contextMenu/demo.html");
+        Thread.sleep(3000);
+        //Click chuot phai
+        action.contextClick(driver.findElement(By.cssSelector("span.context-menu-one"))).perform();
+        By quickcontextby = By.cssSelector("li.context-menu-icon-quit");
+        Assert.assertTrue(driver.findElement(quickcontextby).isDisplayed());
+        //hover mouse
+        action.moveToElement(driver.findElement(quickcontextby)).perform();
+
+        Assert.assertTrue(driver.findElement(By.cssSelector("li.context-menu-icon-quit.context-menu-visible.context-menu-hover")).isDisplayed());
+        action.click(driver.findElement(quickcontextby)).perform();
+        driver.switchTo().alert().accept();
+        Assert.assertFalse(driver.findElement(quickcontextby).isDisplayed());
+
+    }
+    @Test
+    public void TC_05_ScrollELement() throws InterruptedException {
+        driver.get("https://live.techpanda.org/index.php/about-magento-demo-store");
+        Thread.sleep(3000);
+        action.scrollToElement(driver.findElement(By.cssSelector("input#newsletter"))).perform();
+
+    }
+
 
     @AfterClass
     //3 Clean : Delete Data/ account/ CLose Browser
