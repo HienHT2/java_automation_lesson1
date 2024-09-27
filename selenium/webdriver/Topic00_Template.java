@@ -15,8 +15,9 @@ public class Topic00_Template {
     @BeforeClass
     public void initalBrowser(){
         driver = new FirefoxDriver();
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-        driver.get("https://demo.nopcommerce.com/");
+
     }
     @Test
     // 2 -Action/ execute: Tuong tac voi cac Element ,...
