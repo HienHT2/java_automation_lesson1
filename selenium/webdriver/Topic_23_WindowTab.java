@@ -196,7 +196,7 @@ public class Topic_23_WindowTab {
     @AfterClass
     //3 Clean : Delete Data/ account/ CLose Browser
     public void cleanBrowser(){
-        //driver.quit();
+        driver.quit();
     }
 
 
