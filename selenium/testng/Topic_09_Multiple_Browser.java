@@ -60,7 +60,9 @@ public class Topic_09_Multiple_Browser {
         driver.findElement(emailTextbox).sendKeys(userName);
         driver.findElement(passwordTextbox).sendKeys(password);
         driver.findElement(loginButton).click();
-       // Assert.assertTrue(driver.findElement(By.xpath("//div[@class='col-1']//p")).getText().contains(userName));
+       Assert.assertTrue(driver.findElement(By.xpath("//div[@class='col-1']//p")).getText().contains(userName));
+       driver.findElement(By.xpath("//header[@id='header']//span[text()='Account']")).click();
+       driver.findElement(By.xpath("//a[text()='Log Out']")).click();
 
     }
 
